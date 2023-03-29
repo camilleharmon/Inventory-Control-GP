@@ -24,7 +24,7 @@ public class BuyerView {
 	public static void main(String[] args) {
 		
 		greetCusto();
-
+		//ADD
 	}
 	
 	public static void greetCusto() {
