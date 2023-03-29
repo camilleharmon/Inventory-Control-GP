@@ -21,7 +21,7 @@ public class BuyerView {
     public static final String ORANGE = "\033[48;2;255;165;0m";
     public static final String LBLUE = "\u001b[46;1m";
     
-	public static void main(String[] args) {
+	public static void start() {
 		
 		greetCusto();
 		//ADD

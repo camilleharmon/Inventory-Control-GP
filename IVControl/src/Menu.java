@@ -18,6 +18,7 @@ public class Menu
 		if(login == 1)
 			{
 			System.out.println("Welcome valued customer!");
+			BuyerView.start();
 			}
 		else if(login == 2)
 			{
@@ -30,11 +31,7 @@ public class Menu
 			else
 				{
 				System.out.println("That was incorrect. You will be redirected to the main menu.");
-				try {
-				    TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException ie) {
-				    Thread.currentThread().interrupt();
-				}
+				Delay.delay3();
 				startMenu();
 				}
 			}
