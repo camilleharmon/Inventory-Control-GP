@@ -1,9 +1,14 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BuyerView {
 	
 	public static Scanner userInput = new Scanner(System.in);
 	public static Scanner userIntInput = new Scanner(System.in);
+	static Scanner file;
+	static ArrayList <Inventory> items = new ArrayList <Inventory>();
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -21,13 +26,14 @@ public class BuyerView {
     public static final String ORANGE = "\033[48;2;255;165;0m";
     public static final String LBLUE = "\u001b[46;1m";
     
-	public static void start() {
+    public static void main(String[] args) throws FileNotFoundException 
+	{	
+    	file = new Scanner(new File("Items.txt"));
+    	greetCusto();
 		
-		greetCusto();
-		//ADD
 	}
 	
-	public static void greetCusto() {
+	public static void greetCusto() throws FileNotFoundException {
 		
 		System.out.println("Welcome to the " + ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET + "!");
 		System.out.println("Here is our inventory: ");
@@ -35,19 +41,24 @@ public class BuyerView {
 		display();
 	}
 	
-	public static void printIV() {
+	public static void printIV() throws FileNotFoundException {
 		
 		int counter = 1;
 		
 		for(int i = 0; i < 10; i++) {
 			
-//			String SKU = file.next();
-//			String name = file.next();
-//			int amount = file.nextInt();
-//			int retail_cost = file.nextInt();
-//			int wholesale_cost = file.nextInt();
+			String SKU = file.next();
+			String name = file.next();
+			int amount = file.nextInt();
+			double retail_cost = file.nextDouble();
+			double wholesale_cost = file.nextDouble();
 			
-			System.out.println(counter + ") ");
+			items.add(new Inventory(SKU, name, amount, retail_cost, wholesale_cost));
+		}
+		
+		for(int i = 0; i < 10; i++) {
+			
+			System.out.println(counter + ") " + items.get(i).getName());
 			counter++;
 		}
 	}
