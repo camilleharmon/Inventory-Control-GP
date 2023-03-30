@@ -98,14 +98,25 @@ public class BuyerView {
 		System.out.println("");
 		System.out.println("What would you like to " + ANSI_RED + "buy" + ANSI_RESET + "?");
 		
+		int choice = userIntInput.nextInt();
 	}
 
 	public static void search() {
 		
+		int counter = 1;
 		System.out.println("");
 		System.out.print(ANSI_CYAN + "Search: " + ANSI_RESET);
 		
 		String search = userInput.nextLine();
+		
+		for(int i = 0; i < items.size(); i++) {
+			
+			if(items[i, + search.length()].equals(search)) {
+				
+				System.out.println(counter + ") " + items.get(i).getName());
+				counter++;
+			}
+		}
 	}
 
 	
