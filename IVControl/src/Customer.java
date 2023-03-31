@@ -3,7 +3,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BuyerView {
+import jdk.tools.jlink.internal.ModularJarArchive;
+
+public class Customer {
 	
 	public static Scanner userInput = new Scanner(System.in);
 	public static Scanner userIntInput = new Scanner(System.in);
@@ -35,6 +37,7 @@ public class BuyerView {
 	
 	public static void greetCusto() throws FileNotFoundException {
 		
+		file = new Scanner(new File("Items.txt"));
 		System.out.println("Welcome to the " + ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET + "!");
 		System.out.println("Here is our inventory: ");
 		printIV();
@@ -90,6 +93,7 @@ public class BuyerView {
 				ask = true;
 			}
 		}
+		
 		
 	}
 	

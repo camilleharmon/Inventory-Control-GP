@@ -27,6 +27,7 @@ public class Menu
 			if(password.equals("password"))
 				{
 				System.out.println("Welcome valued employee!");
+				Customer.greetCusto();
 				}
 			else
 				{
