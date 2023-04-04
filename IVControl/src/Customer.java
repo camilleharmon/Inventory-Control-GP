@@ -7,26 +7,28 @@ import jdk.tools.jlink.internal.ModularJarArchive;
 
 public class Customer {
 	
-	public static Scanner userInput = new Scanner(System.in);
-	public static Scanner userIntInput = new Scanner(System.in);
+	static Scanner userInput = new Scanner(System.in);
+	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner file;
 	static ArrayList <Inventory> items = new ArrayList <Inventory>();
-	public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001b[34;1m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_HGREEN = "\u001b[42;1m";
-    public static final String ANSI_MAGENTA = "\u001b[35m";
+	static int listNum = 0;
+	
+	static final String ANSI_RESET = "\u001B[0m";
+    static final String ANSI_RED = "\u001B[31m";
+    static final String ANSI_GREEN = "\u001B[32m";
+    static final String ANSI_YELLOW = "\u001B[33m";
+    static final String ANSI_BLUE = "\u001b[34;1m";
+    static final String ANSI_PURPLE = "\u001B[35m";
+    static final String ANSI_CYAN = "\u001B[36m";
+    static final String ANSI_HGREEN = "\u001b[42;1m";
+    static final String ANSI_MAGENTA = "\u001b[35m";
     
-    public static final String BLUE = "\u001b[44;1m";
-    public static final String GREEN = "\u001b[42;1m";
-    public static final String YELLOW = "\u001b[43;1m";
-    public static final String RED = "\u001b[41;1m";
-    public static final String ORANGE = "\033[48;2;255;165;0m";
-    public static final String LBLUE = "\u001b[46;1m";
+    static final String BLUE = "\u001b[44;1m";
+    static final String GREEN = "\u001b[42;1m";
+    static final String YELLOW = "\u001b[43;1m";
+    static final String RED = "\u001b[41;1m";
+    static final String ORANGE = "\033[48;2;255;165;0m";
+    static final String LBLUE = "\u001b[46;1m";
     
     public static void main(String[] args) throws FileNotFoundException 
 	{	
@@ -64,6 +66,8 @@ public class Customer {
 			System.out.println(counter + ") " + items.get(i).getName());
 			counter++;
 		}
+		
+		listNum = counter;
 	}
 	
 	public static void display() {
@@ -103,6 +107,19 @@ public class Customer {
 		System.out.println("What would you like to " + ANSI_RED + "buy" + ANSI_RESET + "?");
 		
 		int choice = userIntInput.nextInt();
+		
+		if(choice > listNum) {
+			
+			System.out.println("INPUT ERROR");
+			buy();
+		}else if(choice == 2) {
+			
+			
+			
+		}else {
+			
+			
+		}
 	}
 
 	public static void search() {
@@ -112,15 +129,20 @@ public class Customer {
 		System.out.print(ANSI_CYAN + "Search: " + ANSI_RESET);
 		
 		String search = userInput.nextLine();
+		search = search.toLowerCase();
 		
 		for(int i = 0; i < items.size(); i++) {
 			
-			if(items[i, + search.length()].equals(search)) {
+			if(items.get(i).getName().toLowerCase().contains(search)) {
 				
 				System.out.println(counter + ") " + items.get(i).getName());
 				counter++;
 			}
 		}
+		
+		listNum = counter;
+		
+		display();
 	}
 
 	
