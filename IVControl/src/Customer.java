@@ -27,12 +27,22 @@ public class Customer {
     	greetCusto();
 		
 	}
+    
+    public static void start() throws FileNotFoundException 
+	{	
+    	file = new Scanner(new File("Items.txt"));
+    	greetCusto();
+		
+	}
 	
 	public static void greetCusto() throws FileNotFoundException {
 		
+		Delay.delay2();
 		file = new Scanner(new File("Items.txt"));
-		System.out.println("Welcome to the " + ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET + "!");
+		System.out.println(ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET);
+		Delay.delay2();
 		System.out.println("Here is our inventory: ");
+		Delay.delay2();
 		printIV();
 		display();
 	}
@@ -56,6 +66,7 @@ public class Customer {
 			
 			System.out.println(counter + ") " + items.get(i).getName());
 			counter++;
+			Delay.delay1();
 		}
 		
 		listNum = counter;
@@ -65,6 +76,7 @@ public class Customer {
 		
 		boolean ask = true;
 		
+		Delay.delay2();
 		System.out.println("________________________");
 		System.out.print(RED + "BUY" + ANSI_RESET);
 		System.out.print("               ");
@@ -137,6 +149,7 @@ public class Customer {
 				
 				System.out.println(counter + ") " + items.get(i).getName());
 				counter++;
+				Delay.delay1();
 			}
 		}
 		

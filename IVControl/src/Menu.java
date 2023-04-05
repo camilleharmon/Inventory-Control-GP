@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 public class Menu
@@ -7,7 +8,7 @@ public class Menu
 //	Opening menu asks if user is buyer or company employee
 	//Employee access requires a password
 
-	public static void startMenu()
+	public static void startMenu() throws FileNotFoundException
 		{
 		System.out.println("Welcome!");
 		System.out.println("Would you like to log in as a buyer or company employee?");
@@ -18,7 +19,7 @@ public class Menu
 		if(login == 1)
 			{
 			System.out.println("Welcome valued customer!");
-			BuyerView.start();
+			Customer.start();
 			}
 		else if(login == 2)
 			{
@@ -27,7 +28,7 @@ public class Menu
 			if(password.equals("password"))
 				{
 				System.out.println("Welcome valued employee!");
-				Customer.greetCusto();
+				//employee class here
 				}
 			else
 				{
