@@ -3,8 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jdk.tools.jlink.internal.ModularJarArchive;
-
 public class Customer {
 	
 	static Scanner userInput = new Scanner(System.in);
@@ -75,16 +73,25 @@ public class Customer {
 		
 		while(ask) {
 			
-			int choice = userIntInput.nextInt();
+			String choice = userInput.nextLine();
+			choice = choice.toLowerCase();
 			
-			if(choice == 1) {
-				
-				ask = false;
-				buy();
-			}else if(choice == 2) {
+			if(choice.equals("search")) {
 				
 				ask = false;
 				search();
+			}else if(choice.equals("s")) {
+				
+				ask = false;
+				search();
+			}else if(choice.equals("buy")) {
+				
+				ask = false;
+				buy();
+			}else if(choice.equals("b")) {
+				
+				ask = false;
+				buy();
 			}else {
 				
 				ask = true;
