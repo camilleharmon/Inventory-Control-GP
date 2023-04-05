@@ -13,21 +13,14 @@ public class Customer {
 	static ArrayList <Inventory> items = new ArrayList <Inventory>();
 	static int listNum = 0;
 	
+	//text color
 	static final String ANSI_RESET = "\u001B[0m";
     static final String ANSI_RED = "\u001B[31m";
     static final String ANSI_GREEN = "\u001B[32m";
     static final String ANSI_YELLOW = "\u001B[33m";
-    static final String ANSI_BLUE = "\u001b[34;1m";
-    static final String ANSI_PURPLE = "\u001B[35m";
     static final String ANSI_CYAN = "\u001B[36m";
-    static final String ANSI_HGREEN = "\u001b[42;1m";
-    static final String ANSI_MAGENTA = "\u001b[35m";
-    
-    static final String BLUE = "\u001b[44;1m";
-    static final String GREEN = "\u001b[42;1m";
-    static final String YELLOW = "\u001b[43;1m";
+    //background color
     static final String RED = "\u001b[41;1m";
-    static final String ORANGE = "\033[48;2;255;165;0m";
     static final String LBLUE = "\u001b[46;1m";
     
     public static void main(String[] args) throws FileNotFoundException 
