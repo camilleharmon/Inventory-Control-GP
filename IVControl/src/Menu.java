@@ -28,7 +28,7 @@ public class Menu
 			if(password.equals("password"))
 				{
 				System.out.println("Welcome valued employee!");
-				//employee class here
+				Employee.start();
 				}
 			else
 				{
