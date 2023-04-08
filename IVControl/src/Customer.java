@@ -9,6 +9,8 @@ public class Customer {
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner file;
 	static ArrayList <Inventory> items = new ArrayList <Inventory>();
+	static ArrayList <Inventory> searchItems = new ArrayList <Inventory>();
+
 	static int listNum = 0;
 	
 	//text color
@@ -59,12 +61,17 @@ public class Customer {
 			double retail_cost = file.nextDouble();
 			double wholesale_cost = file.nextDouble();
 			
-			items.add(new Inventory(SKU, name, amount, retail_cost, wholesale_cost));
+			if(amount > 0) {
+				Inventory iv = new Inventory(SKU, name, amount, retail_cost, wholesale_cost);
+				items.add(iv);
+				searchItems.add(iv);
+			}
 		}
 		
 		for(int i = 0; i < 10; i++) {
 			
 			System.out.println(counter + ") " + items.get(i).getName());
+			System.out.println("\tAmount: " + items.get(i).getAmount());
 			counter++;
 			Delay.delay1();
 		}
@@ -120,21 +127,34 @@ public class Customer {
 		
 		int choice = userIntInput.nextInt();
 		
-		if(choice > listNum) {
+		if(choice > searchItems.size()) {
 			
 			System.out.println("INPUT ERROR");
 			buy();
-		}else if(choice == 2) {
-			
-			
-			
-		}else {
-			
-			
 		}
+		
+		int amt = searchItems.get(choice-1).decAmount();
+		
+		WritingToFile.order(searchItems.get(choice-1));
+		WritingToFile.writeItemFile(items);
+		
+		if(amt == 0)
+			searchItems.remove(choice-1);
+		
+		for(int i = 0; i < searchItems.size(); i++) {
+			
+			System.out.println(i+1 + ") " + searchItems.get(i).getName());
+			System.out.println("\tAmount: " + searchItems.get(i).getAmount());
+			Delay.delay1();
+		}
+		
+		display();
+		
 	}
 
 	public static void search() {
+		
+		searchItems.clear();
 		
 		int counter = 1;
 		System.out.println("");
@@ -145,11 +165,15 @@ public class Customer {
 		
 		for(int i = 0; i < items.size(); i++) {
 			
-			if(items.get(i).getName().toLowerCase().contains(search)) {
+			if((search == "*" || items.get(i).getName().toLowerCase().contains(search)) 
+					&& items.get(i).getAmount() > 0) {
 				
 				System.out.println(counter + ") " + items.get(i).getName());
+				System.out.println("\tAmount: " + items.get(i).getAmount());
 				counter++;
 				Delay.delay1();
+				
+				searchItems.add(items.get(i));
 			}
 		}
 		

@@ -40,6 +40,12 @@ public class Inventory
 			{
 				this.amount = amount;
 			}
+		public int decAmount()
+			{
+				this.amount--;
+				
+				return(this.amount);
+			}
 		
 		public double getRetailCost()
 			{
