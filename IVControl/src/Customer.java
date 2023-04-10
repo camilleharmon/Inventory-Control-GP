@@ -81,6 +81,8 @@ public class Customer {
 	
 	public static void display() {
 		
+		Reorder.reorder();
+		
 		boolean ask = true;
 		
 		Delay.delay2();

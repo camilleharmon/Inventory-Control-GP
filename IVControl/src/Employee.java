@@ -42,7 +42,7 @@ public class Employee {
 		System.out.println(ANSI_RED + "M" +ANSI_GREEN+ "a" + ANSI_YELLOW + "n" + ANSI_CYAN + "a" + ANSI_RED + "g" +ANSI_GREEN+ "e" 
 		+ ANSI_YELLOW + "m" + ANSI_CYAN + "e" +  ANSI_RED + "m" +ANSI_GREEN+ "e" + ANSI_YELLOW + "n" + ANSI_CYAN + "t" + ANSI_RESET);
 		Delay.delay2();
-		System.out.println("Money : $$$");
+		System.out.println("Money : " + Reorder.storeAccount); //account data variable is in reorder, feel free to change if what i did doesn't work with what you are doing
 		Delay.delay2();
 		System.out.println("Expenses : 0");
 		Delay.delay2();

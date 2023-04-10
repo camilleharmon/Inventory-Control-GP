@@ -1,30 +1,28 @@
 public class Reorder
 	{
-		public static void main(String[] args) {
-		reorder();	
-
-	    }	
+	public static int storeAccount = 100000;
+		
 	
 	public static void reorder()
 		{
 		 
-		int storeAccount = 100000;
+		
 		for(int i = 0; i < Customer.items.size(); i++)
 			{
 			
-			if(Customer.items.get(i).getAmount() < 5)
+			if(Customer.items.get(i).getAmount() <= 3)
 				{
 				double wholesale = Customer.items.get(i).getWholesaleCost() * 15;
-				System.out.println(wholesale);
-				if(storeAccount < wholesale)
+				if(storeAccount > wholesale)
 					{
 					Customer.items.get(i).setAmount(Customer.items.get(i).getAmount() + 15);
 					WritingToFile.reorderWrite(i);
-					
+					Reorder.storeAccount -= wholesale;
 					}
 				else
 					{
 					WritingToFile.noMoney(i);
+					
 					}
 				}
 			}
