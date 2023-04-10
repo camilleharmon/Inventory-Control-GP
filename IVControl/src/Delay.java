@@ -12,7 +12,7 @@ public class Delay
 					}
 			}
 		public static void delay2()
-			{
+			{ 
 				try
 					{
 						Thread.sleep(750);

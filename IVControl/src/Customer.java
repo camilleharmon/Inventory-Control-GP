@@ -129,7 +129,7 @@ public class Customer {
 		
 		int choice = userIntInput.nextInt();
 		
-		if(choice > searchItems.size()) {
+		if(choice > searchItems.size()) { 
 			
 			System.out.println("INPUT ERROR");
 			buy();

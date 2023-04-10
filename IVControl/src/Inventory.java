@@ -14,7 +14,7 @@ public class Inventory
 			setRetailCost(r);
 			setWholesaleCost(w);
 		}
-		public String getSKU()
+		public String getSKU() 
 			{
 				return SKU;
 			}

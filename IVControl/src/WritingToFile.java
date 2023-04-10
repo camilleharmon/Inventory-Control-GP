@@ -112,7 +112,7 @@ public class WritingToFile
         
         catch(IOException ex) 
         	{
-            System.out.println("Error writing to file '" + fileName + "'");
+            System.out.println("Error writing to file '" + fileName + "'"); 
             // Or we could just do this:
             // ex.printStackTrace();
         	}
