@@ -131,7 +131,7 @@ public class WritingToFile
             // Note that write() does not automatically
             // append a newline character.
             bufferedWriter.write("There was not enough money to reorder " + Customer.items.get(i).getName());
-            bufferedWriter.newLine();
+            bufferedWriter.newLine(); 
             
 
             // Always close files.
