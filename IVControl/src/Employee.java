@@ -13,9 +13,9 @@ public class Employee {
 	
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
-    static final String ANSI_RED = "\u001B[31m";
+    static final String ANSI_RED = "\u001B[31m";  
     static final String ANSI_GREEN = "\u001B[32m";
-    static final String ANSI_YELLOW = "\u001B[33m";
+    static final String ANSI_YELLOW = "\u001B[33m"; 
     static final String ANSI_CYAN = "\u001B[36m";
     //background color
     static final String RED = "\u001b[41;1m";
@@ -43,7 +43,10 @@ public class Employee {
 		trkFile = new Scanner(new File("Tracking.txt"));
 		System.out.println(ANSI_RED + "M" +ANSI_GREEN+ "a" + ANSI_YELLOW + "n" + ANSI_CYAN + "a" + ANSI_RED + "g" +ANSI_GREEN+ "e" 
 		+ ANSI_YELLOW + "m" + ANSI_CYAN + "e" +  ANSI_RED + "m" +ANSI_GREEN+ "e" + ANSI_YELLOW + "n" + ANSI_CYAN + "t" + ANSI_RESET);
+
+//Reorder.storeAccount
 //		Delay.delay2();
+
 		printIV();
 		printTracking();
 		

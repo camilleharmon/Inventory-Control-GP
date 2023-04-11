@@ -10,11 +10,11 @@ public class Inventory
 		{
 			setSKU(s);
 			setName(n);
-			setAmount(a);
+			setAmount(a); 
 			setRetailCost(r);
 			setWholesaleCost(w);
 		}
-		public String getSKU()
+		public String getSKU() 
 			{
 				return SKU;
 			}

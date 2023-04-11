@@ -12,8 +12,8 @@ public class Delay
 					}
 			}
 		public static void delay2()
-			{
-				try
+			{ 
+				try 
 					{
 						Thread.sleep(750);
 					} catch (InterruptedException e)

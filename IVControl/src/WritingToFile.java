@@ -62,7 +62,7 @@ public class WritingToFile
 
         // Note that write() does not automatically
         // append a newline character.
-        bufferedWriter.write(item.getName() + " has been ordered, at a cost of $"+String.valueOf(item.getRetailCost()));
+        bufferedWriter.write(item.getName() + " has been ordered at a cost of $"+String.valueOf(item.getRetailCost()));
         bufferedWriter.newLine();
         
 
@@ -137,18 +137,18 @@ public class WritingToFile
 
             // Note that write() does not automatically
             // append a newline character.
-            bufferedWriter.write(Customer.items.get(i).getName() + "has been reordered.  Amount was increase by 15.");
+            bufferedWriter.write(Customer.items.get(i).getName() + " amount was increase by 15.");
             bufferedWriter.newLine();
             
 
             // Always close files.
             bufferedWriter.close();
-            System.out.println("Test");
+  
         	}
         
         catch(IOException ex) 
         	{
-            System.out.println("Error writing to file '" + fileName + "'");
+            System.out.println("Error writing to file '" + fileName + "'"); 
             // Or we could just do this:
             // ex.printStackTrace();
         	}
@@ -167,14 +167,14 @@ public class WritingToFile
             // Note that write() does not automatically
             // append a newline character.
             bufferedWriter.write("There was not enough money to reorder " + Customer.items.get(i).getName());
-            bufferedWriter.newLine();
+            bufferedWriter.newLine(); 
             
 
             // Always close files.
             bufferedWriter.close();
-            System.out.println("Test");
-        	}
-        
+
+        	} 
+         
         catch(IOException ex) 
         	{
             System.out.println("Error writing to file '" + fileName + "'");

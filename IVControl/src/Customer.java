@@ -18,7 +18,7 @@ public class Customer {
 	
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
-    static final String ANSI_RED = "\u001B[31m";
+    static final String ANSI_RED = "\u001B[31m"; 
     static final String ANSI_GREEN = "\u001B[32m";
     static final String ANSI_YELLOW = "\u001B[33m";
     static final String ANSI_CYAN = "\u001B[36m";
@@ -100,6 +100,8 @@ public class Customer {
 	
 	public static void display() {
 		
+		Reorder.reorder();
+		
 		boolean ask = true;
 		
 		Delay.delay2();
@@ -146,7 +148,7 @@ public class Customer {
 		
 		int choice = userIntInput.nextInt();
 		
-		if(choice > searchItems.size()) {
+		if(choice > searchItems.size()) { 
 			
 			System.out.println("INPUT ERROR");
 			buy();
