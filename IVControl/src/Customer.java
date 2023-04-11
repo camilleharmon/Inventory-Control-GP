@@ -7,12 +7,15 @@ public class Customer {
 	
 	static Scanner userInput = new Scanner(System.in);
 	static Scanner userIntInput = new Scanner(System.in);
-	static Scanner file;
+	static Scanner invFile;
+	static Scanner receiptFile;
 	static ArrayList <Inventory> items = new ArrayList <Inventory>();
 	static ArrayList <Inventory> searchItems = new ArrayList <Inventory>();
+	static ArrayList <Purchase> receipts = new ArrayList <Purchase>();
 
 	static int listNum = 0;
-	 
+	static int INVENTORYSIZE = 10;
+	
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
     static final String ANSI_RED = "\u001B[31m"; 
@@ -25,22 +28,22 @@ public class Customer {
     
     public static void main(String[] args) throws FileNotFoundException 
 	{	
-    	file = new Scanner(new File("Items.txt"));
+    	invFile = new Scanner(new File("Items.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
     	greetCusto();
-		
 	}
     
     public static void start() throws FileNotFoundException 
 	{	
-    	file = new Scanner(new File("Items.txt"));
-    	greetCusto();
-		
+    	invFile = new Scanner(new File("Items.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
+    	greetCusto();	
 	}
 	
 	public static void greetCusto() throws FileNotFoundException {
 		
 		Delay.delay2();
-		file = new Scanner(new File("Items.txt"));
+		invFile = new Scanner(new File("Items.txt"));
 		System.out.println(ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET);
 		Delay.delay2();
 		System.out.println("Here is our inventory: ");
@@ -53,13 +56,14 @@ public class Customer {
 		
 		int counter = 1;
 		
-		for(int i = 0; i < 10; i++) {
+		//Load inventory
+		for(int i = 0; i < INVENTORYSIZE; i++) {
 			
-			String SKU = file.next();
-			String name = file.next();
-			int amount = file.nextInt();
-			double retail_cost = file.nextDouble();
-			double wholesale_cost = file.nextDouble();
+			String SKU = invFile.next();
+			String name = invFile.next();
+			int amount = invFile.nextInt();
+			double retail_cost = invFile.nextDouble();
+			double wholesale_cost = invFile.nextDouble();
 			
 			if(amount > 0) {
 				Inventory iv = new Inventory(SKU, name, amount, retail_cost, wholesale_cost);
@@ -67,8 +71,23 @@ public class Customer {
 				searchItems.add(iv);
 			}
 		}
+
+		//Load receipts
+		while(receiptFile.hasNext())
+		{			
+			String name = receiptFile.next();
+			int count = receiptFile.nextInt();
+			double cost = receiptFile.nextDouble();
+			
+			receipts.add(new Purchase(name, count, cost));
+		}
 		
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < receipts.size(); i++) {
+			
+			System.out.println(receipts.get(i).getName() + " " + receipts.get(i).getPurchasedCount());
+		}
+		
+		for(int i = 0; i < INVENTORYSIZE; i++) {
 			
 			System.out.println(counter + ") " + items.get(i).getName());
 			System.out.println("\tAmount: " + items.get(i).getAmount());
@@ -134,6 +153,28 @@ public class Customer {
 			System.out.println("INPUT ERROR");
 			buy();
 		}
+		
+		Inventory siv = searchItems.get(choice-1);
+		
+		boolean found = false;
+		//Search receipts to see if the item has been purchased yet
+		for(int j = 0; j < receipts.size(); j++) {
+			
+			if(siv.getName().equals(receipts.get(j).getName())){
+				
+				receipts.get(j).incPurchasedCount();
+				found = true;
+				break;
+			}
+		}
+		
+		if(!found) {
+			
+			receipts.add(new Purchase(siv.getName(), 1, siv.getRetailCost()));
+		}
+		
+		//Save purchase file
+		WritingToFile.purchase(receipts);
 		
 		int amt = searchItems.get(choice-1).decAmount();
 		

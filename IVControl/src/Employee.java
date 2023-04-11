@@ -7,9 +7,9 @@ public class Employee {
 
 	static Scanner userInput = new Scanner(System.in);
 	static Scanner userIntInput = new Scanner(System.in);
-	static Scanner file;
-	static ArrayList <Inventory> receipts = new ArrayList <Inventory>();
-	static int listNum = 0;
+	static Scanner receiptFile;
+	static Scanner trkFile;
+	static ArrayList <Purchase> receipts = new ArrayList <Purchase>();
 	
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
@@ -23,60 +23,98 @@ public class Employee {
     
 	public static void main(String[] args) throws FileNotFoundException 
 	{	
-    	file = new Scanner(new File("Tracking.txt"));
+    	trkFile = new Scanner(new File("Tracking.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
     	greetEmployee();
 		
 	}
 	
 	public static void start() throws FileNotFoundException 
 	{	
-    	file = new Scanner(new File("Tracking.txt"));
+    	trkFile = new Scanner(new File("Tracking.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
     	greetEmployee();
 		
 	}
 	
 	public static void greetEmployee() throws FileNotFoundException {
 		
-		Delay.delay2();
-		file = new Scanner(new File("Tracking.txt"));
+		//Delay.delay2();
+		trkFile = new Scanner(new File("Tracking.txt"));
 		System.out.println(ANSI_RED + "M" +ANSI_GREEN+ "a" + ANSI_YELLOW + "n" + ANSI_CYAN + "a" + ANSI_RED + "g" +ANSI_GREEN+ "e" 
 		+ ANSI_YELLOW + "m" + ANSI_CYAN + "e" +  ANSI_RED + "m" +ANSI_GREEN+ "e" + ANSI_YELLOW + "n" + ANSI_CYAN + "t" + ANSI_RESET);
-		Delay.delay2();
-		System.out.println("Money : " + Reorder.storeAccount); //account data variable is in reorder, feel free to change if what i did doesn't work with what you are doing
-		Delay.delay2();
-		System.out.println("Expenses : 0");
-		Delay.delay2();
-		System.out.println("Bottom Line : $$$");
-		Delay.delay2();
-		System.out.println("New Transactions : ");
-		Delay.delay2();
+
+//Reorder.storeAccount
+//		Delay.delay2();
+
 		printIV();
+		printTracking();
+		
 		//display();
+	}
+	
+	public static String padRight(String s, int n) {
+	     return String.format("%-" + n + "s", s);  
+	}
+	
+	public static void printTracking() throws FileNotFoundException{
+		
+		ArrayList <String> history = new ArrayList <String>();
+		
+		WritingToFile.orderHistory(history);
+		
+		System.out.println("");
+		System.out.println("Order History");
+		System.out.println("-------------------------------------------------");
+		
+		
+		for(int i = 0; i < history.size(); i++) {
+			
+			System.out.println(history.get(i));
+			Delay.delay1();
+		}
 	}
 	
 	public static void printIV() throws FileNotFoundException {
 		
-		int counter = 1;
-		
-		for(int i = 0; i < 10; i++) {
+		//Load receipts
+		while(receiptFile.hasNext())
+		{			
+			String name = receiptFile.next();
+			int count = receiptFile.nextInt();
+			double cost = receiptFile.nextDouble();
 			
-			String SKU = file.next();
-			String name = file.next();
-			int amount = file.nextInt();
-			double retail_cost = file.nextDouble();
-			double wholesale_cost = file.nextDouble();
-			
-			receipts.add(new Inventory(SKU, name, amount, retail_cost, wholesale_cost));
+			receipts.add(new Purchase(name, count, cost));
 		}
 		
-		for(int i = 0; i < 10; i++) {
+		double bottomLine = 0;
+		
+		System.out.print(padRight("Name", 25));
+		System.out.print(padRight("Count", 7));
+		System.out.print(padRight("Cost", 10));
+		System.out.println(padRight("Total", 15));
+		System.out.println("-------------------------------------------------");
+		
+		
+		for(int i = 0; i < receipts.size(); i++) {
 			
-			System.out.println(counter + ") " + receipts.get(i).getName());
-			counter++;
+			String name = receipts.get(i).getName();
+			int count = receipts.get(i).getPurchasedCount();
+			double cost = receipts.get(i).getCost();
+			
+			double total = cost * count;
+			bottomLine += total;
+			
+			System.out.print(padRight(name, 25));
+			System.out.print(padRight(String.valueOf(count), 7));
+			System.out.print(padRight(String.valueOf(cost), 10));
+			System.out.println(padRight(String.valueOf(total), 15));
 			Delay.delay1();
 		}
 		
-		listNum = counter;
+		System.out.println("_________________________________________________");
+		System.out.print(padRight("Bottom Line", 42));
+		System.out.println(bottomLine);
 	}
 
 }
