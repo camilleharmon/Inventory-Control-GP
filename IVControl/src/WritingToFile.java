@@ -11,7 +11,7 @@ public class WritingToFile
     
     public static void writeItemFile(ArrayList <Inventory> items)
 	{
-	String fileName = "Itemsx.txt";
+	String fileName = "Items.txt";
 	try {
         // Assume default encoding.
         FileWriter fileWriter = new FileWriter(fileName, false);
@@ -152,7 +152,7 @@ public class WritingToFile
 
             // Note that write() does not automatically
             // append a newline character.
-            bufferedWriter.write(Customer.items.get(i).getName() + " amount was increase by 15.");
+            bufferedWriter.write(Customer.items.get(i).getName() + " amount was increased by 15.");
             bufferedWriter.newLine();
             
 

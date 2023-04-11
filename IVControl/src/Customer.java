@@ -82,10 +82,10 @@ public class Customer {
 			receipts.add(new Purchase(name, count, cost));
 		}
 		
-		for(int i = 0; i < receipts.size(); i++) {
-			
-			System.out.println(receipts.get(i).getName() + " " + receipts.get(i).getPurchasedCount());
-		}
+//		for(int i = 0; i < receipts.size(); i++) {
+//			
+//			System.out.println(receipts.get(i).getName() + " " + receipts.get(i).getPurchasedCount());
+//		}
 		
 		for(int i = 0; i < INVENTORYSIZE; i++) {
 			
@@ -99,8 +99,6 @@ public class Customer {
 	}
 	
 	public static void display() {
-		
-		Reorder.reorder();
 		
 		boolean ask = true;
 		
@@ -177,6 +175,8 @@ public class Customer {
 		WritingToFile.purchase(receipts);
 		
 		int amt = searchItems.get(choice-1).decAmount();
+		
+		Reorder.reorder(items);
 		
 		WritingToFile.order(searchItems.get(choice-1));
 		WritingToFile.writeItemFile(items);

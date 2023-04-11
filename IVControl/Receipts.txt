@@ -1,4 +1,5 @@
 Glenn_Quagmire_Plushie 2 1580.79
 Rubber_Duck 1 0.99
 Wet_Paint_Brush 1 2.5
-Golden_Scissors 1 14.99
+Golden_Scissors 4 14.99
+Roblox_GiftCard 1 30.0

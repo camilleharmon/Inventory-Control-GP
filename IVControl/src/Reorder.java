@@ -1,21 +1,23 @@
+import java.util.ArrayList;
+
 public class Reorder
 	{
-	public static int storeAccount = 100000;
+	public static int storeAccount = 10000000;
 		
 	
-	public static void reorder()
+	public static void reorder(ArrayList <Inventory> items)
 		{
 		 
 		
-		for(int i = 0; i < Customer.items.size(); i++) 
+		for(int i = 0; i < items.size(); i++) 
 			{  
 			
-			if(Customer.items.get(i).getAmount() <= 3)
+			if(items.get(i).getAmount() <= 3)
 				{
-				double wholesale = Customer.items.get(i).getWholesaleCost() * 15;
+				double wholesale = items.get(i).getRetailCost() * 15;
 				if(storeAccount > wholesale)
 					{
-					Customer.items.get(i).setAmount(Customer.items.get(i).getAmount() + 15);
+					items.get(i).setAmount(items.get(i).getAmount() + 15);
 					WritingToFile.reorderWrite(i);
 					Reorder.storeAccount -= wholesale;
 					}
