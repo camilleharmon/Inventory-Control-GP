@@ -115,14 +115,29 @@ public class WritingToFile
     	}
 	}
     
+    public static void orderHistory(ArrayList <String> items)
+	{
+	String fileName = "Tracking.txt";
+	try {
+        String line = "";
+		
+		// Assume default encoding.
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        
+        while ((line = br.readLine()) != null) 
+        	items.add(line);
+
+        // Always close files.
+        br.close();
+    	}
     
-    
-    
-    
-    
-    
-    
-    
+    catch(IOException ex) 
+    	{
+        System.out.println("Error writing to file '" + fileName + "'");
+        // Or we could just do this:
+        // ex.printStackTrace();
+    	}
+	}
     
     
     public static void reorderWrite(int i)
