@@ -1,10 +1,10 @@
-DF89O9P1 Glenn_Quagmire_Plushie 15 1580.79 1000.89
+DF89O9P1 Glenn_Quagmire_Plushie 13 1580.79 1000.89
 G5H2JJ19 Rango_Movie_Disc 15 89.99 59.99
-FGTY576I Rubber_Duck 15 0.99 0.5
+FGTY576I Rubber_Duck 14 0.99 0.5
 APRK12K3 Birthday_Candles 8 8.59 6.0
 12OTNF45 Sponge 10 1.99 1.0
 0294LAPT Wet_Paint_Brush 10 2.5 1.02
 LAP3D134 Eric_Cartman_Pillow 18 159.99 19.99
 L1P2L3J5 Roblox_GiftCard 4 30.0 20.0
 AIU5984Q Tooth_Brush 20 2.98 1.0
-TYHR492K Golden_Scissors 29 14.99 8.0
+TYHR492K Golden_Scissors 30 14.99 8.0

@@ -14,7 +14,7 @@ public class Customer {
 	static ArrayList <Purchase> receipts = new ArrayList <Purchase>();
 
 	static int listNum = 0;
-	static int IVENTORYSIZE = 10;
+	static int INVENTORYSIZE = 10;
 	
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
@@ -29,21 +29,21 @@ public class Customer {
     public static void main(String[] args) throws FileNotFoundException 
 	{	
     	invFile = new Scanner(new File("Items.txt"));
-    	receiptFile = new Scanner(new File("Recipts.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
     	greetCusto();
 	}
     
     public static void start() throws FileNotFoundException 
 	{	
     	invFile = new Scanner(new File("Items.txt"));
-    	receiptFile = new Scanner(new File("Recipts.txt"));
+    	receiptFile = new Scanner(new File("Receipts.txt"));
     	greetCusto();	
 	}
 	
 	public static void greetCusto() throws FileNotFoundException {
 		
 		Delay.delay2();
-		file = new Scanner(new File("Items.txt"));
+		invFile = new Scanner(new File("Items.txt"));
 		System.out.println(ANSI_RED + "S" +ANSI_GREEN+ "h" + ANSI_YELLOW + "o" + ANSI_CYAN + "p" + ANSI_RESET);
 		Delay.delay2();
 		System.out.println("Here is our inventory: ");
@@ -57,7 +57,7 @@ public class Customer {
 		int counter = 1;
 		
 		//Load inventory
-		for(int i = 0; i < IVENTORYSIZE; i++) {
+		for(int i = 0; i < INVENTORYSIZE; i++) {
 			
 			String SKU = invFile.next();
 			String name = invFile.next();
@@ -72,9 +72,9 @@ public class Customer {
 			}
 		}
 
-		//Load reciepts
-		for(int i = 0; i < IVENTORYSIZE; i++) {
-			
+		//Load receipts
+		while(receiptFile.hasNext())
+		{			
 			String name = receiptFile.next();
 			int count = receiptFile.nextInt();
 			double cost = receiptFile.nextDouble();
@@ -82,7 +82,12 @@ public class Customer {
 			receipts.add(new Purchase(name, count, cost));
 		}
 		
-		for(int i = 0; i < IVENTORYSIZE; i++) {
+		for(int i = 0; i < receipts.size(); i++) {
+			
+			System.out.println(receipts.get(i).getName() + " " + receipts.get(i).getPurchasedCount());
+		}
+		
+		for(int i = 0; i < INVENTORYSIZE; i++) {
 			
 			System.out.println(counter + ") " + items.get(i).getName());
 			System.out.println("\tAmount: " + items.get(i).getAmount());
@@ -153,7 +158,7 @@ public class Customer {
 		//Search receipts to see if the item has been purchased yet
 		for(int j = 0; j < receipts.size(); j++) {
 			
-			if(siv.getName() == receipts.get(j).getName()){
+			if(siv.getName().equals(receipts.get(j).getName())){
 				
 				receipts.get(j).incPurchasedCount();
 				found = true;
