@@ -78,6 +78,42 @@ public class WritingToFile
     	}
 	}
     
+    public static void purchase(ArrayList <Purchase> items)
+	{
+	String fileName = "Receipts.txt";
+	try {
+        // Assume default encoding.
+        FileWriter fileWriter = new FileWriter(fileName, false);
+
+        // Always wrap FileWriter in BufferedWriter.
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+		for(int i = 0; i < items.size(); i++) {
+			
+			Purchase iv = items.get(i);
+			
+	        bufferedWriter.write(iv.getName());
+	        bufferedWriter.write(" ");
+	        bufferedWriter.write(String.valueOf(iv.getPurchasedCount()));
+	        bufferedWriter.write(" ");
+	        bufferedWriter.write(String.valueOf(iv.getCost()));
+	        
+	        bufferedWriter.newLine();
+	        
+	        bufferedWriter.flush();
+		}
+
+        // Always close files.
+        bufferedWriter.close();
+    	}
+    
+    catch(IOException ex) 
+    	{
+        System.out.println("Error writing to file '" + fileName + "'");
+        // Or we could just do this:
+        // ex.printStackTrace();
+    	}
+	}
     
     
     
