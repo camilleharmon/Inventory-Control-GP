@@ -12,7 +12,7 @@ public class Customer {
 	static ArrayList <Inventory> searchItems = new ArrayList <Inventory>();
 
 	static int listNum = 0;
-	
+	 
 	//text color
 	static final String ANSI_RESET = "\u001B[0m";
     static final String ANSI_RED = "\u001B[31m"; 

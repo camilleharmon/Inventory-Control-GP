@@ -8,7 +8,7 @@ public class Reorder
 		 
 		
 		for(int i = 0; i < Customer.items.size(); i++) 
-			{ 
+			{  
 			
 			if(Customer.items.get(i).getAmount() <= 3)
 				{
